@@ -2,11 +2,14 @@ import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
 import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
+import ParticlesBg from 'particles-bg';
 import './App.css';
+
 
 function App() {
   return (
     <div className="App">
+      <ParticlesBg type="cobweb" color="#F5F5F5" num={33} bg={true} />
       <Navigation />
       <Logo />
       <Rank />
