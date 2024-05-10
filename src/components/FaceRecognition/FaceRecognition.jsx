@@ -4,7 +4,9 @@ const FaceRecognition = ({ imageURL }) => {
   return(
     <div className="center ma">
       <div className="img-container">
-        <img src={imageURL} alt="user input image" className="img" /> 
+        {!!imageURL && (
+          <img src={imageURL} alt="user input image" className="img" /> 
+        )}
       </div>
       
     </div>
