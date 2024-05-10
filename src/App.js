@@ -84,23 +84,8 @@ function App() {
   }, [imageURL]);
 
   const onButtonSubmit = () => {
-    fetchImageRegions();
-
-    // const IMAGE_URL = "https://images.inc.com/uploaded_files/image/1920x1080/getty_517194189_373099.jpg";
-    // 'https://samples.clarifai.com/metro-north.jpg'
-
-
-    ///////////////////////////////////////////////////////////////////////////////////
-    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-    ///////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-    // NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
-    // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
-    // this will default to the latest version_id
+    setImageURL(input);
+    console.log("You clicked the Detect Button");
   }
 
   return (
