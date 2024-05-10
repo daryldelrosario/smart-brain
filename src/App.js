@@ -85,7 +85,6 @@ function App() {
 
   const onButtonSubmit = () => {
     setImageURL(input);
-    console.log("You clicked the Detect Button");
   }
 
   return (
