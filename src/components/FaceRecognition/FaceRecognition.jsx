@@ -1,8 +1,8 @@
-const FaceRecognition = () => {
+const FaceRecognition = ({ imageURL }) => {
   return(
-    <>
-      <p>This is Face Recognition</p>
-    </>
+    <div className="center">
+      <img src={imageURL} alt="user input image" />
+    </div>
   )
 }
 
