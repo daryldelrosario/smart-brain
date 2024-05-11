@@ -1,11 +1,14 @@
 import "./FaceRecognition.css";
 
-const FaceRecognition = ({ imageURL }) => {
+const FaceRecognition = ({ imageURL, regions }) => {
+
+  console.log(regions);
+
   return(
     <div className="center ma">
       <div className="img-container">
         {!!imageURL && (
-          <img src={imageURL} alt="user input image" className="img" /> 
+          <img id="inputImg" src={imageURL} alt="check for face recognition" className="img" /> 
         )}
       </div>
       
