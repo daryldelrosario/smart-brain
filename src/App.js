@@ -12,6 +12,7 @@ function App() {
   const [input, setInput] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [regions, setRegions] = useState([]);
+  const [faceDetected, setFaceDetected] = useState(true);
 
   const onInputChange = (e) => {
     setInput(e.target.value);
@@ -21,7 +22,6 @@ function App() {
     const img = document.getElementById("inputImg");
     const imgWidth = Number(img.width);
     const imgHeight = Number(img.height);
-    console.log(imgWidth, imgHeight);
 
     const newRegions = dataSet.map(data => {
       const theBox = data.region_info.bounding_box;
@@ -29,8 +29,6 @@ function App() {
       const leftCol = theBox.left_col;
       const btmRow = theBox.bottom_row;
       const rightCol = theBox.right_col;
-
-      console.log(`topRow: ${topRow}, leftCol: ${leftCol}, btmRow:  ${btmRow}, rightCol: ${rightCol}`);
 
       const topPxNum = Number((topRow * imgHeight).toFixed(3));
       const leftPxNum = Number((leftCol * imgWidth).toFixed(3));
@@ -48,6 +46,7 @@ function App() {
     });
 
     setRegions(newRegions);
+    setFaceDetected(true);
   }
 
   useEffect(() => {
@@ -87,9 +86,15 @@ function App() {
         fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
           .then(response => response.json())
           .then(result => {
-  
+            console.log(result);
             const regions = result.outputs[0].data.regions;
-            calcFaceLocation(regions);
+
+            if(regions) {
+              calcFaceLocation(regions);
+            } else {
+              setFaceDetected(false);
+              setRegions([]);
+            }
           })
           .catch(error => console.log('error', error));
       }
@@ -112,7 +117,7 @@ function App() {
         onInputChange={onInputChange}
         onButtonSubmit={onButtonSubmit}
       />
-      <FaceRecognition imageURL={imageURL} regions={regions} />
+      <FaceRecognition imageURL={imageURL} regions={regions} faceDetected={faceDetected} />
     </div>
   );
 }

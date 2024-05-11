@@ -1,12 +1,21 @@
 import "./FaceRecognition.css";
 
-const FaceRecognition = ({ imageURL, regions }) => {
+const FaceRecognition = ({ imageURL, regions, faceDetected }) => {
+
+  console.log(faceDetected);
+  console.log(regions);
 
   return(
     <div className="center ma">
       <div className="img-container">
         {!!imageURL && (
           <div>
+            {!faceDetected ? (
+              <div className="overlay">
+                 <p>No Faces Detected</p> 
+              </div>
+            ) : null}
+
             <img id="inputImg" src={imageURL} alt="check for face recognition" className="img" /> 
             {regions.map((region, index) => (
               <div
