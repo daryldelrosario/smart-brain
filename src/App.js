@@ -34,8 +34,8 @@ function App() {
 
       const topPxNum = Number((topRow * imgHeight).toFixed(3));
       const leftPxNum = Number((leftCol * imgWidth).toFixed(3));
-      const btmPxNum = Number((btmRow * imgHeight).toFixed(3));
-      const rightPxNum = Number((rightCol * imgWidth).toFixed(3));
+      const btmPxNum = Number(imgHeight - (btmRow * imgHeight).toFixed(3));
+      const rightPxNum = Number(imgWidth - (rightCol * imgWidth).toFixed(3));
 
       const pixelValues = {
         topPx: topPxNum + "px",
