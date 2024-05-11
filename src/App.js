@@ -21,6 +21,7 @@ function App() {
     const img = document.getElementById("inputImg");
     const imgWidth = Number(img.width);
     const imgHeight = Number(img.height);
+    console.log(imgWidth, imgHeight);
 
     const newRegions = dataSet.map(data => {
       const theBox = data.region_info.bounding_box;
@@ -29,16 +30,18 @@ function App() {
       const btmRow = theBox.bottom_row;
       const rightCol = theBox.right_col;
 
+      console.log(`topRow: ${topRow}, leftCol: ${leftCol}, btmRow:  ${btmRow}, rightCol: ${rightCol}`);
+
       const topPxNum = Number((topRow * imgHeight).toFixed(3));
       const leftPxNum = Number((leftCol * imgWidth).toFixed(3));
-      const btmPxNum = Number((imgHeight - (btmRow * imgHeight)).toFixed(3));
-      const rightPxNum = Number((imgWidth - (rightCol * imgWidth)).toFixed(3));
+      const btmPxNum = Number((btmRow * imgHeight).toFixed(3));
+      const rightPxNum = Number((rightCol * imgWidth).toFixed(3));
 
       const pixelValues = {
-        topPx: topPxNum,
-        leftPx: leftPxNum,
-        btmPx: btmPxNum,
-        rightPx: rightPxNum,
+        topPx: topPxNum + "px",
+        leftPx: leftPxNum + "px",
+        btmPx: btmPxNum + "px",
+        rightPx: rightPxNum + "px",
       }
       
       return pixelValues;
