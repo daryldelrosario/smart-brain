@@ -24,21 +24,26 @@ function App() {
 
     const newRegions = dataSet.map(data => {
       const theBox = data.region_info.bounding_box;
-      const topRow = theBox.top_row.toFixed(3);
-      const leftCol = theBox.left_col.toFixed(3);
-      const btmRow = theBox.bottom_row.toFixed(3);
-      const rightCol = theBox.right_col.toFixed(3);
+      const topRow = theBox.top_row;
+      const leftCol = theBox.left_col;
+      const btmRow = theBox.bottom_row;
+      const rightCol = theBox.right_col;
+
+      const topPxNum = Number((topRow * imgHeight).toFixed(3));
+      const leftPxNum = Number((leftCol * imgWidth).toFixed(3));
+      const btmPxNum = Number((imgHeight - (btmRow * imgHeight)).toFixed(3));
+      const rightPxNum = Number((imgWidth - (rightCol * imgWidth)).toFixed(3));
 
       const pixelValues = {
-        topPx: topRow * imgHeight,
-        leftPx: leftCol * imgWidth,
-        btmPx: btmRow * imgHeight,
-        rightPx: rightCol * imgWidth
+        topPx: topPxNum,
+        leftPx: leftPxNum,
+        btmPx: btmPxNum,
+        rightPx: rightPxNum,
       }
       
       return pixelValues;
     });
-    
+
     setRegions(newRegions);
   }
 
