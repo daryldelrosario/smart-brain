@@ -117,7 +117,11 @@ function App() {
         onInputChange={onInputChange}
         onButtonSubmit={onButtonSubmit}
       />
-      <FaceRecognition imageURL={imageURL} regions={regions} faceDetected={faceDetected} />
+      <FaceRecognition 
+        imageURL={imageURL} 
+        regions={regions} 
+        faceDetected={faceDetected} 
+      />
     </div>
   );
 }
