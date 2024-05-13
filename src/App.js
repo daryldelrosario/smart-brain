@@ -4,6 +4,7 @@ import Logo from "./components/Logo/Logo";
 import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
+import SignIn from "./components/SignIn/SignIn";
 import ParticlesBg from 'particles-bg';
 import './App.css';
 
@@ -122,6 +123,7 @@ function App() {
         regions={regions} 
         faceDetected={faceDetected} 
       />
+      <SignIn />
     </div>
   );
 }
