@@ -5,6 +5,7 @@ import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import SignIn from "./components/SignIn/SignIn";
+import Register from "./components/Register/Register";
 import ParticlesBg from 'particles-bg';
 import './App.css';
 
@@ -128,6 +129,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<SignIn setIsSignedIn={setIsSignedIn} />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/home" element = {
           <>
             <Rank />

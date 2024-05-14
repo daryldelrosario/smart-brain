@@ -1,4 +1,5 @@
 import "./SignIn.css";
+import { Link } from 'react-router-dom';
 
 const SignIn = ({ setIsSignedIn }) => {
   const handleSignIn = (e) => {
@@ -26,7 +27,7 @@ const SignIn = ({ setIsSignedIn }) => {
               <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in" />
             </div>
             <div className="lh-copy mt3">
-              <a href="#0" className="f6 link dim black db">Register</a>
+              <Link to="/register"className="f6 link dim black db">Register</Link>
             </div>
           </form>
         </main>
