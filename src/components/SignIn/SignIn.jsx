@@ -1,11 +1,16 @@
 import "./SignIn.css";
 
-const SignIn = () => {
+const SignIn = ({ setIsSignedIn }) => {
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    setIsSignedIn(true);
+  }
+
   return (
     <>
       <article className="br3 ba b--black-10 mv4 w-100 w-75-m w-50-l mw6 shadow-5 center">
         <main className="pa4 black-80">
-          <form className="measure">
+          <form className="measure" onSubmit={handleSignIn}>
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Sign In</legend>
               <div className="mt3">

@@ -1,11 +1,21 @@
 import "./Navigation.css";
 import Logo from "../Logo/Logo";
 
-const Navigation = () => {
+const Navigation = ({ isSignedIn, setIsSignedIn }) => {
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    setIsSignedIn(false);
+  }
+
   return(
     <nav className="nav">
       <Logo />
-      <p className="f3 link dim black underline pa3 pointer">Sign Out</p>
+      {isSignedIn && (
+        <p 
+        className="f3 link dim black underline pa3 pointer"
+        onClick={handleSignOut}
+        >Sign Out</p>
+      )}
     </nav>
   );
 };

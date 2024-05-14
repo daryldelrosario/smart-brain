@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navigation from "./components/Navigation/Navigation";
 import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
@@ -13,6 +14,17 @@ function App() {
   const [imageURL, setImageURL] = useState("");
   const [regions, setRegions] = useState([]);
   const [faceDetected, setFaceDetected] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isSignedIn) {
+      navigate('/home');
+    } else {
+      navigate('/');
+    }
+  }, [isSignedIn, navigate]);
 
   const onInputChange = (e) => {
     setInput(e.target.value);
@@ -110,18 +122,28 @@ function App() {
   return (
     <div className="App">
       <ParticlesBg type="cobweb" color="#F5F5F5" num={33} bg={true} />
-      <Navigation />
-      <Rank />
-      <ImageLinkForm 
-        onInputChange={onInputChange}
-        onButtonSubmit={onButtonSubmit}
+      <Navigation 
+        setIsSignedIn={setIsSignedIn} 
+        isSignedIn={isSignedIn}
       />
-      <FaceRecognition 
-        imageURL={imageURL} 
-        regions={regions} 
-        faceDetected={faceDetected} 
-      />
-      <SignIn />
+      <Routes>
+        <Route path="/" element={<SignIn setIsSignedIn={setIsSignedIn} />} />
+        <Route path="/home" element = {
+          <>
+            <Rank />
+            <ImageLinkForm
+              onInputChange={onInputChange}
+              onButtonSubmit={onButtonSubmit}
+            />
+            <FaceRecognition 
+              imageURL={imageURL}
+              regions={regions}
+              faceDetected={faceDetected}
+            />
+          </>
+        } />
+      </Routes>
+      
     </div>
   );
 }
