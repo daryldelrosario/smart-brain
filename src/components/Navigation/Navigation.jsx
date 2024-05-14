@@ -1,10 +1,11 @@
 import "./Navigation.css";
 import Logo from "../Logo/Logo";
 
-const Navigation = ({ isSignedIn, setIsSignedIn }) => {
+const Navigation = ({ isSignedIn, setIsSignedIn, setImageURL }) => {
   const handleSignOut = (e) => {
     e.preventDefault();
     setIsSignedIn(false);
+    setImageURL("");
   }
 
   return(

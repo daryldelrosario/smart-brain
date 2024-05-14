@@ -124,6 +124,7 @@ function App() {
       <Navigation 
         setIsSignedIn={setIsSignedIn} 
         isSignedIn={isSignedIn}
+        setImageURL={setImageURL}
       />
       <Routes>
         <Route path="/" element={<SignIn setIsSignedIn={setIsSignedIn} />} />
