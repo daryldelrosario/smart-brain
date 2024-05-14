@@ -20,8 +20,10 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(isSignedIn) {
+    if(isSignedIn === "home") {
       navigate('/home');
+    } else if(isSignedIn === "register") {
+      navigate('/register');
     } else {
       navigate('/');
     }

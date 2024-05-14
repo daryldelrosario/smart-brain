@@ -10,8 +10,10 @@ const Navigation = ({ isSignedIn, setIsSignedIn, setImageURL }) => {
 
   return(
     <nav className="nav">
-      <Logo />
-      {isSignedIn && (
+      <Logo 
+        setIsSignedIn={setIsSignedIn}  
+      />
+      {isSignedIn === "home" && (
         <p 
         className="f3 link dim black underline pa3 pointer"
         onClick={handleSignOut}
