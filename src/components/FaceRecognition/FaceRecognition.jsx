@@ -2,9 +2,6 @@ import "./FaceRecognition.css";
 
 const FaceRecognition = ({ imageURL, regions, faceDetected }) => {
 
-  console.log(faceDetected);
-  console.log(regions);
-
   return(
     <div className="center ma">
       <div className="img-container">
