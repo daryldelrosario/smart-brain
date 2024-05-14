@@ -1,10 +1,19 @@
-const Register = () => {
+const Register = ({ setIsSignedIn }) => {
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    setIsSignedIn("home");
+  }
+
+  const handleSignInClick = () => {
+    setIsSignedIn(false);
+  }
 
   return (
     <>
       <article className="br3 ba b--black-10 mv4 w-100 w-75-m w-50-l mw6 shadow-5 center">
-        <main className="pa4 black-80">
-          <form className="measure">
+        <main className="pa3 black-80">
+          <form className="measure" onSubmit={handleRegister}>
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Registration</legend>
               <div className="mt3">
@@ -22,6 +31,12 @@ const Register = () => {
             </fieldset>
             <div className="">
               <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
+            </div>
+            <div className="lh-copy mt3">
+              <p 
+                className="f6 link dim black db"
+                onClick={handleSignInClick}
+              >Sign In</p>
             </div>
           </form>
         </main>

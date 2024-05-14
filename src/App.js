@@ -131,7 +131,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<SignIn setIsSignedIn={setIsSignedIn} />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register setIsSignedIn={setIsSignedIn} />} />
         <Route path="/home" element = {
           <>
             <Rank />
