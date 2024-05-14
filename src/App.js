@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Navigation from "./components/Navigation/Navigation";
-import Logo from "./components/Logo/Logo";
 import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
@@ -112,7 +111,6 @@ function App() {
     <div className="App">
       <ParticlesBg type="cobweb" color="#F5F5F5" num={33} bg={true} />
       <Navigation />
-      <Logo />
       <Rank />
       <ImageLinkForm 
         onInputChange={onInputChange}
