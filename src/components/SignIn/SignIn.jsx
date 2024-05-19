@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./SignIn.css";
 
 const SignIn = ({ setIsSignedIn }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [signInEmail, setSignInEmail] = useState("");
+  const [signInPassword, setSignInPassword] = useState("");
 
 
   const handleSignIn = (e) => {
@@ -21,8 +21,8 @@ const SignIn = ({ setIsSignedIn }) => {
       method: "post",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
-        email: email,
-        password: password
+        email: signInEmail,
+        password: signInPassword
       })
     })
       .then(response => response.json())
@@ -49,7 +49,7 @@ const SignIn = ({ setIsSignedIn }) => {
                   type="email" 
                   name="email-address"  
                   id="email-address" 
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setSignInEmail(e.target.value)}
                 />
               </div>
               <div className="mv3">
@@ -59,7 +59,7 @@ const SignIn = ({ setIsSignedIn }) => {
                   type="password" 
                   name="password"  
                   id="password" 
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setSignInPassword(e.target.value)}
                 />
               </div>
             </fieldset>
