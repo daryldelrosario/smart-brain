@@ -17,9 +17,22 @@ const SignIn = ({ setIsSignedIn }) => {
 
   const onSignInSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
-    setIsSignedIn("home");
+    fetch("http://localhost:3001/signin", {
+      method: "post",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        if(data === "Success") {
+          setIsSignedIn("home");
+        } else {
+          alert("Email and/or Password is incorrect");
+        }
+      })
   }
 
   return (
