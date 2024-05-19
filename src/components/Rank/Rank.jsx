@@ -1,5 +1,4 @@
 const Rank = ({ name, entries }) => {
-  console.log(entries);
 
   return(
     <div className="center">

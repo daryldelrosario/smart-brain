@@ -143,7 +143,6 @@ function App() {
 
   const onButtonSubmit = () => {
     setImageURL(input);
-    console.log("You pressed the image button");
 
     if(input) {
       fetch("http://localhost:3001/image", {
@@ -155,7 +154,6 @@ function App() {
       })
         .then(response => response.json())
         .then(count => {
-          console.log("Before setUser: " + count);
           setUser(prevUser => ({
             ...prevUser,
             entries: count
@@ -164,9 +162,8 @@ function App() {
         .catch(err => {
           console.log("Error updating entries: ", err);
         })
-        console.log("fetch complete");
     } else {
-      console.log("Whoops no image");
+      alert("You should try putting an image url");
     }
   }
 
