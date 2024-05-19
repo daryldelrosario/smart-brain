@@ -19,11 +19,12 @@ function App() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:3001/")
-      .then(response => response.json())
-      .then(console.log)
-  }, []);
+  // USED TO TEST CONNECTION WITH smart-brain-api
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/")
+  //     .then(response => response.json())
+  //     .then(console.log)
+  // }, []);
 
   useEffect(() => {
     if(isSignedIn === "home") {
