@@ -6,10 +6,10 @@ const SignIn = ({ setIsSignedIn }) => {
   const [signInPassword, setSignInPassword] = useState("");
 
 
-  const handleSignIn = (e) => {
-    e.preventDefault();
-    setIsSignedIn("home");
-  }
+  // const handleSignIn = (e) => {
+  //   e.preventDefault();
+  //   setIsSignedIn("home");
+  // }
 
   const handleRegisterClick = () => {
     setIsSignedIn("register");

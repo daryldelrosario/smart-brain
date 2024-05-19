@@ -45,6 +45,18 @@ function App() {
 
   const onInputChange = (e) => {
     setInput(e.target.value);
+  };
+
+  const loadUser = (data) => {
+    setUser({
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined
+    })
+
+    console.log(user);
   }
 
   const calcFaceLocation = (dataSet) => {
@@ -145,7 +157,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<SignIn setIsSignedIn={setIsSignedIn} />} />
-        <Route path="/register" element={<Register setIsSignedIn={setIsSignedIn} />} />
+        <Route path="/register" element={<Register setIsSignedIn={setIsSignedIn} loadUser={loadUser} />} />
         <Route path="/home" element = {
           <>
             <Rank />

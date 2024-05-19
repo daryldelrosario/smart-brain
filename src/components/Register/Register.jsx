@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-const Register = ({ setIsSignedIn }) => {
+const Register = ({ setIsSignedIn, loadUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-
-  const handleRegister = (e) => {
-    e.preventDefault();
-    setIsSignedIn("home");
-  }
+  // Refreshing Server
+  // const handleRegister = (e) => {
+  //   e.preventDefault();
+  //   setIsSignedIn("home");
+  // }
 
   const handleSignInClick = () => {
     setIsSignedIn(false);
@@ -25,10 +25,11 @@ const Register = ({ setIsSignedIn }) => {
         name: name  
       })
     })
-      .then(response => response.jsion())
+      .then(response => response.json())
       .then(user => {
         if(user) {
-          
+          loadUser(user);
+          setIsSignedIn("home");
         }
       })
   }
@@ -37,7 +38,7 @@ const Register = ({ setIsSignedIn }) => {
     <>
       <article className="br3 ba b--black-10 mv4 w-100 w-75-m w-50-l mw6 shadow-5 center">
         <main className="pa3 black-80">
-          <form className="measure" onSubmit={handleRegister}>
+          <form className="measure" onSubmit={onRegisterSubmit}>
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Registration</legend>
               <div className="mt3">
