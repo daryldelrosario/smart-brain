@@ -16,6 +16,13 @@ function App() {
   const [regions, setRegions] = useState([]);
   const [faceDetected, setFaceDetected] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [user, setUser] = useState({
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: ""
+  });
 
   const navigate = useNavigate();
 
