@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./SignIn.css";
 
-const SignIn = ({ setIsSignedIn }) => {
+const SignIn = ({ setIsSignedIn, loadUser }) => {
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
 
@@ -10,7 +10,6 @@ const SignIn = ({ setIsSignedIn }) => {
   //   e.preventDefault();
   //   setIsSignedIn("home");
   // }
-
   const handleRegisterClick = () => {
     setIsSignedIn("register");
   }
@@ -27,7 +26,8 @@ const SignIn = ({ setIsSignedIn }) => {
     })
       .then(response => response.json())
       .then(data => {
-        if(data === "Success") {
+        if(data.id) {
+          loadUser(data);
           setIsSignedIn("home");
         } else {
           alert("Email and/or Password is incorrect");

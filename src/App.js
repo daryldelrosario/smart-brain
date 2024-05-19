@@ -156,11 +156,24 @@ function App() {
         setImageURL={setImageURL}
       />
       <Routes>
-        <Route path="/" element={<SignIn setIsSignedIn={setIsSignedIn} />} />
-        <Route path="/register" element={<Register setIsSignedIn={setIsSignedIn} loadUser={loadUser} />} />
+        <Route 
+          path="/" 
+          element={<SignIn 
+            setIsSignedIn={setIsSignedIn}
+            loadUser={loadUser} />} 
+        />
+        <Route 
+          path="/register" 
+          element={<Register 
+            setIsSignedIn={setIsSignedIn} 
+            loadUser={loadUser} />} 
+        />
         <Route path="/home" element = {
           <>
-            <Rank />
+            <Rank 
+              name={user.name}
+              entries={user.entries}
+            />
             <ImageLinkForm
               onInputChange={onInputChange}
               onButtonSubmit={onButtonSubmit}
