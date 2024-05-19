@@ -55,8 +55,6 @@ function App() {
       entries: data.entries,
       joined: data.joined
     })
-
-    console.log(user);
   }
 
   const calcFaceLocation = (dataSet) => {
@@ -145,6 +143,31 @@ function App() {
 
   const onButtonSubmit = () => {
     setImageURL(input);
+    console.log("You pressed the image button");
+
+    if(input) {
+      fetch("http://localhost:3001/image", {
+        method: "put",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          id: user.id
+        })
+      })
+        .then(response => response.json())
+        .then(count => {
+          console.log("Before setUser: " + count);
+          setUser(prevUser => ({
+            ...prevUser,
+            entries: count
+          }));
+        })
+        .catch(err => {
+          console.log("Error updating entries: ", err);
+        })
+        console.log("fetch complete");
+    } else {
+      console.log("Whoops no image");
+    }
   }
 
   return (
