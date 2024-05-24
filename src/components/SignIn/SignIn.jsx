@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./SignIn.css";
 
 const SignIn = ({ setIsSignedIn, loadUser }) => {
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
+  const emailInputRef = useRef(null);
 
 
   // const handleSignIn = (e) => {
@@ -31,6 +32,9 @@ const SignIn = ({ setIsSignedIn, loadUser }) => {
           setIsSignedIn("home");
         } else {
           alert("Email and/or Password is incorrect");
+          setSignInEmail("");
+          setSignInPassword("");
+          emailInputRef.current.focus();
         }
       })
   }
@@ -50,6 +54,8 @@ const SignIn = ({ setIsSignedIn, loadUser }) => {
                   name="email-address"  
                   id="email-address" 
                   onChange={(e) => setSignInEmail(e.target.value)}
+                  value={signInEmail}
+                  ref={emailInputRef}
                 />
               </div>
               <div className="mv3">
@@ -60,6 +66,7 @@ const SignIn = ({ setIsSignedIn, loadUser }) => {
                   name="password"  
                   id="password" 
                   onChange={(e) => setSignInPassword(e.target.value)}
+                  value={signInPassword}
                 />
               </div>
             </fieldset>
