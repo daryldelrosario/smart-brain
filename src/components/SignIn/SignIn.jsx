@@ -25,9 +25,9 @@ const SignIn = ({ setIsSignedIn, loadUser }) => {
       })
     })
       .then(response => response.json())
-      .then(data => {
-        if(data.id) {
-          loadUser(data);
+      .then(user => {
+        if(user.id) {
+          loadUser(user);
           setIsSignedIn("home");
         } else {
           alert("Email and/or Password is incorrect");
