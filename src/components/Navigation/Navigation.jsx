@@ -12,6 +12,7 @@ const Navigation = ({ isSignedIn, setIsSignedIn, setImageURL }) => {
     <nav className="nav">
       <Logo 
         setIsSignedIn={setIsSignedIn}  
+        setImageURL={setImageURL}
       />
       {isSignedIn === "home" && (
         <p 

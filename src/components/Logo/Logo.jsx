@@ -3,10 +3,11 @@ import Tilt from "react-parallax-tilt";
 import "./Logo.css";
 import logo from "../../assets/logo.png";
 
-const Logo = ({ setIsSignedIn }) => {
+const Logo = ({ setIsSignedIn, setImageURL }) => {
 
   const handleClick = () => {
     setIsSignedIn(false);
+    setImageURL("");
   }
 
   return(
