@@ -31,7 +31,7 @@ const SignIn = ({ setIsSignedIn, loadUser }) => {
           loadUser(user);
           setIsSignedIn("home");
         } else {
-          alert("Email and/or Password is incorrect");
+          alert("Incorrect Login / Password");
           setSignInEmail("");
           setSignInPassword("");
           emailInputRef.current.focus();

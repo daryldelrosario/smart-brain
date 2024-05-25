@@ -4,6 +4,7 @@ const Register = ({ setIsSignedIn, loadUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+
   // Refreshing Server
   // const handleRegister = (e) => {
   //   e.preventDefault();
@@ -30,6 +31,8 @@ const Register = ({ setIsSignedIn, loadUser }) => {
         if(user) {
           loadUser(user);
           setIsSignedIn("home");
+        } else {
+          alert("Invalid Form");
         }
       })
   }
