@@ -17,6 +17,12 @@ const Register = ({ setIsSignedIn, loadUser }) => {
 
   const onRegisterSubmit = (e) => {
     e.preventDefault();
+
+    if(!email || !password || !name) {
+      alert("Invalid Form");
+      return;
+    }
+    
     fetch("http://localhost:3001/register", {
       method: "post",
       headers: {"Content-Type": "application/json"},
@@ -31,8 +37,6 @@ const Register = ({ setIsSignedIn, loadUser }) => {
         if(user) {
           loadUser(user);
           setIsSignedIn("home");
-        } else {
-          alert("Invalid Form");
         }
       })
   }
