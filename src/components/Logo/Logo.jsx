@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Tilt from "react-parallax-tilt";
 import "./Logo.css";
 import logo from "../../assets/logo.png";
