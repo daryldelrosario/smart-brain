@@ -44,7 +44,7 @@ const Register = ({ setIsSignedIn, loadUser }) => {
   return (
     <>
       <article className="br3 ba b--black-10 mv4 w-100 w-75-m w-50-l mw6 shadow-5 center">
-        <main className="pa3 black-80">
+        <main className="pa3 white-80">
           <form className="measure" onSubmit={onRegisterSubmit}>
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Registration</legend>
@@ -80,11 +80,11 @@ const Register = ({ setIsSignedIn, loadUser }) => {
               </div>
             </fieldset>
             <div className="">
-              <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
+              <input className="b ph3 pv2 input-reset ba b--white white bg-transparent grow pointer f6 dib" type="submit" value="Register" />
             </div>
             <div className="lh-copy mt3">
               <p 
-                className="f6 link dim black db"
+                className="f6 link dim white db"
                 onClick={handleSignInClick}
               >Sign In</p>
             </div>
