@@ -4,7 +4,6 @@ body {
   font-family:"Courier New", Courier, monospace;
   /* background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%); */
   background: linear-gradient(89deg, #000000 0%, #FF0000 100%);
-  color: whitesmoke;
 }
 
 .center {
