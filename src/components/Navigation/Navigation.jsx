@@ -16,7 +16,7 @@ const Navigation = ({ isSignedIn, setIsSignedIn, setImageURL }) => {
       />
       {isSignedIn === "home" && (
         <p 
-        className="f3 link dim black underline pa3 pointer"
+        className="f3 link dim white underline pa3 pointer"
         onClick={handleSignOut}
         >Sign Out</p>
       )}
