@@ -17,7 +17,7 @@ const SignIn = ({ setIsSignedIn, loadUser }) => {
 
   const onSignInSubmit = (e) => {
     e.preventDefault();
-    fetch("https://smartbrain-recognition-api.vercel.app//signin", {
+    fetch("https://smartbrain-recognition-api.vercel.app/signin", {
       method: "post",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
