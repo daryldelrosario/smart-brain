@@ -140,7 +140,7 @@ function App() {
           if(!response.ok) {
             throw new Error("Network response was not ok");
           }
-          response.json();
+          return response.json();
         })
         .then(count => {
           setUser(prevUser => ({
