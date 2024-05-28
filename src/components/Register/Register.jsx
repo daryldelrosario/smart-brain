@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Register = ({ setIsSignedIn, loadUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const nameInputRef = useRef(null);
 
   // Refreshing Server
   // const handleRegister = (e) => {
@@ -34,10 +35,21 @@ const Register = ({ setIsSignedIn, loadUser }) => {
     })
       .then(response => response.json())
       .then(user => {
-        if(user) {
+        console.log(user);
+        if(user.id) {
           loadUser(user);
           setIsSignedIn("home");
+
+        } else {
+          alert("Registration failed. Please try again.");
+          setEmail("");
+          setName("");
+          setPassword("");
+          nameInputRef.current.focus();
         }
+      })
+      .catch(err => {
+        console.error("Error registering user: ", err);
       })
   }
 
@@ -51,31 +63,35 @@ const Register = ({ setIsSignedIn, loadUser }) => {
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" for="name">Name</label>
                 <input 
-                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 gray" 
                   type="text" 
                   name="name"  
                   id="name" 
                   onChange={(e) => setName(e.target.value)}
+                  value={name}
+                  ref={nameInputRef}
                 />
               </div>
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" for="email-address">Email</label>
                 <input 
-                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 gray" 
                   type="email" 
                   name="email-address"  
                   id="email-address" 
                   onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 />
               </div>
               <div className="mv3">
                 <label className="db fw6 lh-copy f6" for="password">Password</label>
                 <input 
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 gray" 
                   type="password" 
                   name="password"  
                   id="password" 
                   onChange={(e) => setPassword(e.target.value)}  
+                  value={password}
                 />
               </div>
             </fieldset>

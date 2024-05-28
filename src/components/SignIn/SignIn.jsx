@@ -49,7 +49,7 @@ const SignIn = ({ setIsSignedIn, loadUser }) => {
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" for="email-address">Email</label>
                 <input 
-                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 gray" 
                   type="email" 
                   name="email-address"  
                   id="email-address" 
@@ -61,7 +61,7 @@ const SignIn = ({ setIsSignedIn, loadUser }) => {
               <div className="mv3">
                 <label className="db fw6 lh-copy f6" for="password">Password</label>
                 <input 
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 gray"
                   type="password" 
                   name="password"  
                   id="password" 
