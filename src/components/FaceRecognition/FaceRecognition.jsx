@@ -1,13 +1,18 @@
 import "./FaceRecognition.css";
 
-const FaceRecognition = ({ imageURL, regions, faceDetected }) => {
+const FaceRecognition = ({ imageURL, regions, faceDetected, isProcessing }) => {
 
   return(
     <div className="center ma">
       <div className="img-container">
         {!!imageURL && (
           <div>
-            {!faceDetected && (
+            {isProcessing && (
+              <div className="overlay">
+                <p>Checking Image ...</p>
+              </div>
+            )}
+            {!faceDetected && !isProcessing && (
               <div className="overlay">
                  <p>No Faces Detected</p> 
               </div>

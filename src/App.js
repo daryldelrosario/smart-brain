@@ -23,15 +23,8 @@ function App() {
     entries: 0,
     joined: ""
   });
-
+  const [isProcessing, setIsProcessing] = useState(false);
   const navigate = useNavigate();
-
-  // USED TO TEST CONNECTION WITH smart-brain-api
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/")
-  //     .then(response => response.json())
-  //     .then(console.log)
-  // }, []);
 
   useEffect(() => {
     if(isSignedIn === "home") {
@@ -86,11 +79,13 @@ function App() {
 
     setRegions(newRegions);
     setFaceDetected(true);
+    setIsProcessing(false);
   }
 
   useEffect(() => {
     const fetchImageRegions = () => {
       if(imageURL.trim() !== "") {
+        setIsProcessing(true);
         fetch("http://localhost:3001/clarifai", {
           method: 'POST',
           headers: {
@@ -111,12 +106,14 @@ function App() {
             } else {
               setFaceDetected(false);
               setRegions([]);
+              setIsProcessing(false);
             }
           })
           .catch(error => {
-            console.log('error', error);
+            console.error(error);
             setFaceDetected(false);
             setRegions([]);
+            setIsProcessing(false);
           })
           
       }
@@ -129,6 +126,9 @@ function App() {
     setImageURL(input);
 
     if(input) {
+      setRegions([]);
+      setFaceDetected(true);
+      setIsProcessing(true);
       fetch("http://localhost:3001/image", {
         method: "put",
         headers: {"Content-Type": "application/json"},
@@ -136,7 +136,12 @@ function App() {
           id: user.id
         })
       })
-        .then(response => response.json())
+        .then(response => {
+          if(!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          response.json();
+        })
         .then(count => {
           setUser(prevUser => ({
             ...prevUser,
@@ -186,6 +191,7 @@ function App() {
               imageURL={imageURL}
               regions={regions}
               faceDetected={faceDetected}
+              isProcessing={isProcessing}
             />
           </>
         } />
