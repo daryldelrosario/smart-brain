@@ -98,16 +98,27 @@ function App() {
           },
           body: JSON.stringify({ imageURL: imageURL })
         })
-          .then(response => response.json())
+          .then(response => {
+            if(!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
           .then(regions => {
-            if(regions) {
+            if(regions && regions.length > 0) {
               calcFaceLocation(regions);
+              setFaceDetected(true);
             } else {
               setFaceDetected(false);
               setRegions([]);
             }
           })
-          .catch(error => console.log('error', error));
+          .catch(error => {
+            console.log('error', error);
+            setFaceDetected(false);
+            setRegions([]);
+          })
+          
       }
     };
 

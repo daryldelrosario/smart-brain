@@ -7,11 +7,11 @@ const FaceRecognition = ({ imageURL, regions, faceDetected }) => {
       <div className="img-container">
         {!!imageURL && (
           <div>
-            {!faceDetected ? (
+            {!faceDetected && (
               <div className="overlay">
                  <p>No Faces Detected</p> 
               </div>
-            ) : null}
+            )}
 
             <img id="inputImg" src={imageURL} alt="check for face recognition" className="img" /> 
             {regions.map((region, index) => (
