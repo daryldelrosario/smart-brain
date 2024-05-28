@@ -86,7 +86,7 @@ function App() {
     const fetchImageRegions = () => {
       if(imageURL.trim() !== "") {
         setIsProcessing(true);
-        fetch("https://smartbrain-recognition-api.vercel.app//clarifai", {
+        fetch("https://smartbrain-recognition-api.vercel.app/clarifai", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -129,7 +129,7 @@ function App() {
       setRegions([]);
       setFaceDetected(true);
       setIsProcessing(true);
-      fetch("https://smartbrain-recognition-api.vercel.app//image", {
+      fetch("https://smartbrain-recognition-api.vercel.app/image", {
         method: "put",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
